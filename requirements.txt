@@ -32,7 +32,7 @@ sqlparse==0.4.4
 threadpoolctl==2.1.0
 tokenizers==0.10.3
 -f https://download.pytorch.org/whl/torch_stable.html
-torch==1.7.0+cpu
+torch==1.7.1+cpu
 torchvision==0.7.0+cpu
 tqdm==4.61.1
 transformers==4.7.0
