@@ -6,30 +6,14 @@
         <div class="header">
             <h1>Semantic Search</h1>
         </div>
-        <p class="lead">This is a simple web demo of semantic search (search by meaning) 
-            on food products using Solr and BERT embeddings. Happy searching!</p>
+        <p class="lead">This web demo showcases semantic search (search by meaning) on award abstracts using Solr and BERT embeddings. Feel free to explore and enjoy your searching!</p>
         <p>
-            In information retrieval, retrieved documents are ranked by relevance to the query.
-            Fundamentally, relevance is based on the textual similarity (e.g. BM25) between an 
-            information requirement (query) and an article (document).
-            However, a search system needs to measure the relevance of a document and a query beyond 
-            the simple textual similarity. Specifically, textual similarity at the word level does not 
-            take into consideration the actual meaning of words or the entire phrase in context. 
-            As such, we shall model the semantic similarity between two pieces of text to achieve a better 
-            search result. The traditional approach to address semantic search is to transform  each 
-            sentence into a vector space such that semantically similar sentences will be close to 
-            each other. We use <a href="https://github.com/UKPLab/sentence-transformers" target="__blank">
-            Sentence-BERT (SBERT)</a> to derive semantically meaningful BERT embeddings that can be 
-            compared using cosine similarity.
+            In the field of information retrieval, documents obtained from searches are ranked based on their relevance to the query. Traditionally, this relevance has been determined by assessing the textual similarity (e.g. BM25) between the query and the document. However, this approach overlooks the true meaning of words or phrases in their context, leading to limitations in search accuracy. To overcome this, we introduce a method to measure semantic similarity between texts, allowing for more precise search results.
+
+To achieve semantic search, we adopt a technique that transforms each sentence into a vector space, where semantically similar sentences are positioned close to one another. This is where Sentence-BERT (SBERT) comes into play, generating semantically meaningful BERT embeddings that can be compared using cosine similarity. With this approach, we can significantly enhance the search experience and yield more relevant results.
         </p>
         <hr class="my-4">
-        <p>The web is built on Django, SBERT, Solr, and Heroku. 
-            As the application is hosted on a free dyno,
-            please expect <b>repsonse delays</b> from the server.
-            Particularly, the delays are caused by the heavyweight PyTorch dependency 
-            and dyno sleeping (after 30 minutes of no web traffic).
-            However, the application can be run locally for better performance and testing.
-            The source code of the application is available in the below link on GitHub.</p>
+        
         <a class="btn waves-effect waves-light red lighten-2" href="/search" 
             role="button" onclick="showLoader()">Search now</a>
     </div>
