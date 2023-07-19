@@ -77,9 +77,9 @@ class SearchUtils:
         query_search = "{!vp f=vector vector=\"%s\"}" % (query_vector)
         fl_search = "product_id,text,rating,score"
 
-        search_results = self.SOLR.search(query_search, **{
+        search_results = self.SOLR.search(query_search,  dict({
             'fl': fl_search
-        }, rows=self.MAX_ROWS)
+        }), rows=self.MAX_ROWS)
         searched_reviews = [{'rank': rank + 1, 'product': result['product_id'][0], \
             'text': result['text'][0], 'rating': result['rating'][0], 'score': result['score']} \
             for rank, result in enumerate(search_results)]
@@ -91,9 +91,9 @@ class SearchUtils:
         query_search = "text: (%s)" % (query)
         fl_search = "product_id,text,rating,score"
 
-        search_results = self.SOLR.search(query_search, **{
+        search_results = self.SOLR.search(query_search,  dict({
             'fl': fl_search
-        }, rows=self.MAX_ROWS)
+        }), rows=self.MAX_ROWS)
         searched_reviews = [{'rank': rank + 1, 'product': result['product_id'][0], \
             'text': result['text'][0], 'rating': result['rating'][0], 'score': result['score']} \
             for rank, result in enumerate(search_results)]
