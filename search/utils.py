@@ -7,14 +7,14 @@ from search.setup_solr import constants
 
 def start_solr_server():
     # start Solr server in background
-    subprocess.Popen(['.\\solr-6.6.6\\bin\\solr', 'start'], shell=True)
+    subprocess.Popen(['./solr-6.6.6/bin/solr', 'start'])
 
 
 
 
 def stop_solr_server():
     # stop Solr server in background
-    subprocess.Popen(['.\\solr-6.6.6\\bin\\solr', 'stop', '-all'], shell=True)
+    subprocess.Popen(['./solr-6.6.6/bin/solr', 'stop', '-all'])
 
 
 class SearchUtils:
