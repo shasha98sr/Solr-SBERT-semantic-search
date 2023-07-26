@@ -23,7 +23,7 @@ pytz==2021.1
 regex==2021.8.3
 requests==2.31.0
 sacremoses==0.0.45
-scipy==1.9.0rc1
+scipy==1.6.1
 sentence-transformers==1.2.0
 sentencepiece==0.1.95
 six==1.16.0
