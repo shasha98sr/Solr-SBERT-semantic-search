@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Semantic Search</title>
+</head>
+
+<div class="overlay" id="loader" style="display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+opacity: 0.6;
+background-color: black;
+z-index: 99;">
+    <div class="preloader-wrapper big active" style="margin:auto;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    position:fixed;">
+        <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+
+        <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+  
+        <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+  
+        <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<body>
+    <ul id="nav-dropdown" class="dropdown-content">       
+        <li><a href="/search" onclick="showLoader()">Search</a></li>
+        <li><a href="/about" onclick="showLoader()">About</a></li>
+    </ul>
+
+    <nav>
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="left brand-logo" onclick="showLoader()"><img src="{% static 'img/home.png' %}" height="50"> Home</a>
+                <ul id="nav-mobile" class="right hide-on-small-only">        
+                    <li><a href="/search" onclick="showLoader()">Search</a></li>
+                    <li><a href="/about" onclick="showLoader()">About</a></li>
+                </ul>
+                <a class="right dropdown-trigger hide-on-med-and-up" href="#!" data-target="nav-dropdown"><i class="material-icons">menu</i></a>
+            </div>
+        </div>
+    </nav>
+
+    {% block body %}
+        <h1>Base</h1>
+    {% endblock %}
+</body>
+
+</html>

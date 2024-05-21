@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="header">
+            <h3>Abstract Search</h3>
+        </div>
+        <div id="confirm-modal" class="modal">
+            <div class="modal-content">
+                <h5>Before you submit</h5>
+                <p>Are you sure to submit the same search query again?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close waves-effect waves-light red lighten-2 btn" onClick="submitForm()">Confirm</button>
+                <button class="modal-close waves-effect waves-light teal btn">Cancel</button>
+            </div>
+        </div>
+        <form id="search-form" class="col s12" onsubmit="processForm(event)">
+            <div class="row">
+                <div class="input-field col s12">
+                    <!-- <label for="query">Query</label> -->
+                    <input required type="text" class="validate" id="q" name="q" value="{{ q }}" 
+                    placeholder="Enter query">
+                    <label for="q">Query</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <select required type="input" id="top" name="top">
+                        <!-- <option value="" disabled selected>Choose your option</option> -->
+                        <option value="5" {% if top == "5" %}selected{% endif %}>5</option>
+                        <option value="15" {% if top == "15" %}selected{% endif %}>15</option>
+                        <option value="50" {% if top == "50" %}selected{% endif %}>50</option>
+                    </select>
+                    <label>Top results</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <select required type="input" name="method" id="method">
+                        <!-- <option value="" disabled selected>Choose your option</option> -->
+                        <!-- <option value="ltr" {% if method == "ltr" %} selected{% endif %}>Learning To Rank</option> -->
+                        <option value="bert" {% if method == "bert" %}selected{% endif %}>BERT Embeddings (with cosine similartiy)</option>
+                        <option value="bm25" {% if method == "bm25" %}selected{% endif %}>BM25</option>
+                    </select>
+                    <label>Search method</label>
+                </div>
+            </div>
+            <button class="btn right waves-effect waves-light" type="submit">Submit</button>
+        </form>
+    </div>
+
+    {% if error %}
+        <div class="row">
+            <div class="header">
+                <h5>{{ error }}</h5>
+            </div>
+        </div>
+    {% elif results %}
+        <div class="row">
+            <div class="header">
+                <h5>Search Results:</h5>
+            </div>
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Proposal Number (FP)</th>
+                        <th>Abstract</th>
+                        <th></th>
+                        <th>Similarity Score</th>
+                    </tr>
+                </thead>
+        
+                <tbody>
+                    {% for result in results %}
+                        <tr>
+                            <td>{{ result.rank }}</td>
+                            <td><a href="https://communitypartnerships.chs.asu.edu/proposal/{{result.product}}" target="_blank">{{ result.product }}</a></td>
+                            <td>{{ result.text }}</td>
+                            <td>{{ result.id }}</td>
+                            <td>{{ result.score }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% elif results is not none %}
+        <div class="row">
+            <div class="header">
+                <h5>No matching result!</h5>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

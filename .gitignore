@@ -1,0 +1,15 @@
+.vscode/*
+env/*
+*.pyc
+*.npy
+
+solr-*/server/logs/*
+solr-*/server/tmp/*.properties
+solr-*/contrib/*
+solr-*/dist/*.jar
+solr-*/dist/solrj-lib/*
+solr-*/dist/test-framework/*
+solr-*/docs/*
+solr-*/example/*
+solr-*/licenses/*
+solr-8983.pid
